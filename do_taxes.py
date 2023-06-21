@@ -45,7 +45,7 @@ else:
 transactions['months_late'] = filing_month - \
     (transactions['purchase_date'].dt.year * 12 + \
      transactions['purchase_date'].dt.month)
-transactions[transactions['months_late'] < 0]['months_late'] = 0
+transactions.loc[transactions['months_late'] < 0, 'months_late'] = 0
 
 transactions['interest'] = ANNUAL_INTEREST * \
     transactions['months_late'] / 12 * \
