@@ -36,11 +36,11 @@ transactions['credit'] = transactions['tax_paid']
 
 # Use a simple encoding (index = 12 * Gregorian year + month index) to do month
 # arithmetic to compute months late
-today = date.today()
-if today.day <= DAY_OF_MONTH_TAX_DUE:
-    filing_month = today.year * 12 + today.month - 1
+filing_date = date.fromisoformat(argv[2])
+if filing_date.day <= DAY_OF_MONTH_TAX_DUE:
+    filing_month = filing_date.year * 12 + filing_date.month - 1
 else:
-    filing_month = today.year * 12 + today.month
+    filing_month = filing_date.year * 12 + filing_date.month
 
 transactions['months_late'] = filing_month - \
     (transactions['purchase_date'].dt.year * 12 + \
@@ -62,7 +62,7 @@ filing_total_interest = transactions['interest'].sum()
 filing_total_penalty = transactions['penalty'].sum()
 
 # Output results as CSV but with footer for totals
-with open(argv[2], 'w', newline='') as cf:
+with open(argv[3], 'w', newline='') as cf:
     cf.write(transactions[['vendor_name_and_address',
                            'purchase_date',
                            'qty_and_description_of_property_purchased',
