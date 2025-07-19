@@ -9,7 +9,7 @@ import pandas as pd
 
 
 TAX_RATE = 0.07
-ANNUAL_INTEREST = 0.18  # Accrue simple interest month by month on overdue tax
+ANNUAL_INTEREST = 0.12  # Accrue simple interest month by month on overdue tax
 PENALTY = 0.1  # One-time penalty on overdue tax, not subject to interest
 DAY_OF_MONTH_TAX_DUE = 20
 
