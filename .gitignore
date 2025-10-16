@@ -1,2 +1,5 @@
 # Vim swap
 .*.sw*
+
+# pdf hand-prefilled forms
+*.pdf
